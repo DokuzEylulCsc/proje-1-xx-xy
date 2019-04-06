@@ -10,6 +10,7 @@ namespace KelimeOyunu
     {
         static void Main(string[] args)
         {
+            Sozcuk sozcuk = new Sozcuk();
         }
     }
 }
