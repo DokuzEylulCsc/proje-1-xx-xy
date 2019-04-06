@@ -13,7 +13,7 @@ namespace KelimeOyunu
         {
             string dosyayolu = @"kelimeler.txt";
             FileStream fs = new FileStream(dosyayolu, FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("iso-8859-9"), false);
+            StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("iso-8859-9"), false); //turkce karakterlere duyarlılık
             string[] yazi = new string[159];
             int i = 0;
             while (sr.EndOfStream != true)
