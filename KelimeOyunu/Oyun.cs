@@ -16,7 +16,8 @@ namespace KelimeOyunu
             Console.WriteLine("HOS GELDİNİZ {0}", oyuncu.OyuncuAdi);
             AI yapayzeka = new AI();
             yapayzeka.Derece();
-           
+            Console.WriteLine("Kelime girin");
+            oyuncu.KelimeGonder(Console.ReadLine());
         }
     }
 }

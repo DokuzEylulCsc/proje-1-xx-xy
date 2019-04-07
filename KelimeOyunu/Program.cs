@@ -12,7 +12,9 @@ namespace KelimeOyunu
         {       
             Oyun oyun = new Oyun();
             oyun.Baslat();
+           
             Console.ReadKey();
+            
         }
     }
 }
