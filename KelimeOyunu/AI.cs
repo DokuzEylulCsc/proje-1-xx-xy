@@ -22,8 +22,10 @@ namespace KelimeOyunu
                     if (x < 1 || x > 3) Console.WriteLine("Yanlis secim yaptiniz!");
                     else tahmin = s.Zorluk(x);
                 } while (x != 1 && x != 2 && x != 3);
+                Console.WriteLine(tahmin);
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("Hatali islem yaptiniz!!!");
                 Derece();
@@ -32,17 +34,16 @@ namespace KelimeOyunu
 
         public void Karar(string kelime) //disaridan alınan kelime ile yapay zekanın ürettigi kelime karsilastirilir
         {
-            Console.WriteLine(tahmin);
             
             if (kelime == tahmin) Console.WriteLine("TEBRİKLER, BİLDİNİZ");
             else
             {
-
-                do
+                if (Kontrol(kelime) == false || Uzunluk(kelime) == false) //uzunluk ve karakter kontrolu
+                    Console.WriteLine("\nGirdiginiz kelime dile ait olmayan karakterler iceriyor veya iki kelimenin uzunlugu esit degil.");
+                else Karsilastirma(kelime); //sıkıntı yoksa karsilastirma metoduna gonderilir
+                while (kelime != tahmin)  //kelime ile tahmin esit olmadıgı surece yeni kelime istemesi icin
                 {
-                    if (Kontrol(kelime) == false || Uzunluk(kelime) == false) //uzunluk ve karakter kontrolu
-                        Console.WriteLine("\nGirdiginiz kelime dile ait olmayan karakterler iceriyor veya iki kelimenin uzunlugu esit degil.");
-                    else Karsilastirma(kelime); //sıkıntı yoksa karsilastirma metoduna gonderilir
+                    
 
                     Console.WriteLine("\nYeni kelime girin");
                     kelime = Console.ReadLine();
@@ -55,9 +56,9 @@ namespace KelimeOyunu
                             kelime = Console.ReadLine();
                         } while (Kontrol(kelime) == false || Uzunluk(kelime) == false);
                     }
-                       Karsilastirma(kelime);
-                      } while (kelime != tahmin); //kelime ile tahmin esit olmadıgı surece yeni kelime istemesi icin
-                Console.WriteLine("TEBRİKLER, BİLDİNİZ");
+                    Karsilastirma(kelime);
+                }
+                Console.WriteLine("\nTEBRİKLER, BİLDİNİZ");
             }
         }
         
@@ -106,7 +107,7 @@ namespace KelimeOyunu
             {
                if(tahmin[i]==kelime[i])
                 {
-                    Console.Write("{0}", tahmin[i]); //saglandiysa
+                    Console.Write("{0}, ", tahmin[i]); //saglandiysa
                     varMi = true;
                 }
             }
