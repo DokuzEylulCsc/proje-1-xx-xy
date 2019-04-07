@@ -8,5 +8,22 @@ namespace KelimeOyunu
 {
     class Oyuncu
     {
+        private string adi;
+        public Oyuncu(string isim) //nesne olusturulurken "adi"nin girilmesi icin, zorunlu kılıyor
+        {
+            this.adi = isim;
+        }
+        public string OyuncuAdi //adi isimli degiskene dogrudan disaridan erisilmesin diye
+        {
+            get
+            {
+                return this.adi;
+            }
+            set
+            {
+                this.adi = value;
+            }
+        }
+        
     }
 }

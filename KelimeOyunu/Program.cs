@@ -9,8 +9,10 @@ namespace KelimeOyunu
     class Program
     {
         static void Main(string[] args)
-        {
-            Sozcuk sozcuk = new Sozcuk();
+        {       
+            Oyun oyun = new Oyun();
+            oyun.Baslat();
+            Console.ReadKey();
         }
     }
 }

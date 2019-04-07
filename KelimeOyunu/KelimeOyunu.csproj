@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Al.cs" />
+    <Compile Include="AI.cs" />
     <Compile Include="Kaydedici.cs" />
     <Compile Include="Oyun.cs" />
     <Compile Include="Oyuncu.cs" />
