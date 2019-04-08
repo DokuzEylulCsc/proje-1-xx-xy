@@ -16,16 +16,15 @@ namespace KelimeOyunu
             string ad = Console.ReadLine();
             Oyuncu oyuncu = new Oyuncu(ad);
             Console.WriteLine("HOS GELDİNİZ {0}", oyuncu.OyuncuAdi);
-            AI yapayzeka = new AI();
+            AI yapayzeka = new AI(oyuncu);
             do //yeniden oynamasının kontrolu
             {
                 yapayzeka.Derece();
                 Console.WriteLine("Kelime girin");
-                oyuncu.KelimeGonder(Console.ReadLine());
+                yapayzeka.Karar(Console.ReadLine()); //Güncellendi.
 
                 do //oyuncu tekrar oyun oynamak isterse, E veya H disinda bir sey girmesinin kontrolu
                 {
-
                     Console.WriteLine("Yeni Oyun oynamak ister misiniz?");
                     c = Console.ReadLine();
                     if (c == "e" || c == "E")
@@ -38,14 +37,12 @@ namespace KelimeOyunu
                         yeniden = false;
                         break;
                     }
+                    
                     else Console.WriteLine("Yanlis giris yaptınız!");
-
 
                 } while (c != "e" || c != "E" || c != "h" || c != "H");
 
             } while (yeniden == true);
-           
-
         }
     }
 }

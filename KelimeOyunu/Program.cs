@@ -9,10 +9,10 @@ namespace KelimeOyunu
     class Program
     {
         static void Main(string[] args)
-        {       
+        {
+            Console.Title = ("Kelime Oyunu XX-XY v1.1");
             Oyun oyun = new Oyun();
-            oyun.Baslat();
-                      
+            oyun.Baslat();   
         }
     }
 }

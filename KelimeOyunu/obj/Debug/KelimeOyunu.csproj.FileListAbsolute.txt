@@ -5,3 +5,10 @@ C:\Users\suheyla\Desktop\PROJENESNE\KelimeOyunu\obj\Debug\KelimeOyunu.csprojAsse
 C:\Users\suheyla\Desktop\PROJENESNE\KelimeOyunu\obj\Debug\KelimeOyunu.csproj.CoreCompileInputs.cache
 C:\Users\suheyla\Desktop\PROJENESNE\KelimeOyunu\obj\Debug\KelimeOyunu.exe
 C:\Users\suheyla\Desktop\PROJENESNE\KelimeOyunu\obj\Debug\KelimeOyunu.pdb
+C:\Users\RAMBEY\Desktop\proje-1-xx-xy-master (2)\proje-1-xx-xy-master\KelimeOyunu\bin\Debug\KelimeOyunu.exe.config
+C:\Users\RAMBEY\Desktop\proje-1-xx-xy-master (2)\proje-1-xx-xy-master\KelimeOyunu\bin\Debug\KelimeOyunu.exe
+C:\Users\RAMBEY\Desktop\proje-1-xx-xy-master (2)\proje-1-xx-xy-master\KelimeOyunu\bin\Debug\KelimeOyunu.pdb
+C:\Users\RAMBEY\Desktop\proje-1-xx-xy-master (2)\proje-1-xx-xy-master\KelimeOyunu\obj\Debug\KelimeOyunu.csprojAssemblyReference.cache
+C:\Users\RAMBEY\Desktop\proje-1-xx-xy-master (2)\proje-1-xx-xy-master\KelimeOyunu\obj\Debug\KelimeOyunu.csproj.CoreCompileInputs.cache
+C:\Users\RAMBEY\Desktop\proje-1-xx-xy-master (2)\proje-1-xx-xy-master\KelimeOyunu\obj\Debug\KelimeOyunu.exe
+C:\Users\RAMBEY\Desktop\proje-1-xx-xy-master (2)\proje-1-xx-xy-master\KelimeOyunu\obj\Debug\KelimeOyunu.pdb

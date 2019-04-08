@@ -3,29 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace KelimeOyunu
 {
+
     class AI
     {
+        Oyuncu oyuncu;
+
+        public AI(Oyuncu o)
+        {
+            oyuncu = o;
+        }
+
         Sozcuk s = new Sozcuk();
-        static string tahmin; 
+
+        static string tahmin;
+
+        public int x;
+        public int soru;
+        public static int sure;
+        public int deneme = 1;
+
         public void Derece()
         {
-            int x;
             try //hata kontrolü, harf vb. girildiğinde 
             {
                 do  //derece seçimi
                 {
-                    Console.WriteLine("Zorluk derecesini giriniz 1/2/3");
+                    Console.WriteLine("Zorluk derecesini giriniz Kolay (1) / Orta (2) /Zor (3)");
                     x = int.Parse(Console.ReadLine());
                     if (x < 1 || x > 3) Console.WriteLine("Yanlis secim yaptiniz!");
                     else tahmin = s.Zorluk(x);
                 } while (x != 1 && x != 2 && x != 3);
                 Console.WriteLine(tahmin);
-
+                soru = 0;
+                SetTimer(true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Hatali islem yaptiniz!!!");
                 Derece();
@@ -34,17 +50,16 @@ namespace KelimeOyunu
 
         public void Karar(string kelime) //disaridan alınan kelime ile yapay zekanın ürettigi kelime karsilastirilir
         {
-            
-            if (kelime == tahmin) Console.WriteLine("TEBRİKLER, BİLDİNİZ");
-            else
+            do
             {
                 if (Kontrol(kelime) == false || Uzunluk(kelime) == false) //uzunluk ve karakter kontrolu
+                {
                     Console.WriteLine("\nGirdiginiz kelime dile ait olmayan karakterler iceriyor veya iki kelimenin uzunlugu esit degil.");
+                    deneme++;
+                }
                 else Karsilastirma(kelime); //sıkıntı yoksa karsilastirma metoduna gonderilir
                 while (kelime != tahmin)  //kelime ile tahmin esit olmadıgı surece yeni kelime istemesi icin
                 {
-                    
-
                     Console.WriteLine("\nYeni kelime girin");
                     kelime = Console.ReadLine();
                     if (Kontrol(kelime) == false || Uzunluk(kelime) == false) //yeni girilen kelime icin kontrol
@@ -57,11 +72,49 @@ namespace KelimeOyunu
                         } while (Kontrol(kelime) == false || Uzunluk(kelime) == false);
                     }
                     Karsilastirma(kelime);
+                    deneme++;
                 }
-                Console.WriteLine("\nTEBRİKLER, BİLDİNİZ");
-            }
+                Tur();
+                SetTimer(false);
+            } while (tahmin == kelime && soru == 0);
         }
         
+        private void Tur()
+        {
+            soru++;
+            if (soru < 10)
+            {
+                Console.WriteLine("\nTEBRİKLER, BİLDİNİZ / Kalan Soru : " + (10 - soru) + "\nKelime Girin");
+                Kaydedici.Hesaplama(soru, sure, deneme, tahmin); // Kaydedici classında Hesaplama fonksiyonuna istatiksel veriler gönderilir.
+                deneme = 1;
+                sure = 0;
+                tahmin = s.Zorluk(x); // Sonraki tur için yeni kelime isteği
+                Console.WriteLine(tahmin);
+                Karar(Console.ReadLine());
+            }
+            else
+            {
+                Console.WriteLine("\nTEBRİKLER, Tüm Soruları Cevapladınız.");
+                Kaydedici.Hesaplama(soru, sure, deneme, tahmin);
+                sure = 0;
+                Kaydedici.dosyayaYaz(oyuncu.OyuncuAdi); // Tüm sorular bilindikten sonra istatistikler oyuncuAdi.txt şeklinde kaydedilir.
+                Kaydedici.dosyadanOku(oyuncu.OyuncuAdi); // Oyun bitiminde istatistikler gösterilir.
+            }
+        }
+
+        public static void SetTimer(bool durum) //Timer fonksiyonu;
+        {
+            System.Timers.Timer aTimer = new System.Timers.Timer();
+            aTimer.Elapsed += new ElapsedEventHandler(SureArttir);
+            aTimer.Interval = 1000;
+            aTimer.Enabled = durum;
+        }
+
+        private static void SureArttir(Object source, ElapsedEventArgs e) //Oyunlar için süre tutan fonksiyonumuz.
+        {
+            sure++;
+        }
+
         private bool Uzunluk(string kelime) // yapay zekanın urettigi kelimenin uzunluguyla girilen kelimenin uzunlugunu karsilastirma
         {
             if (tahmin.Length == kelime.Length)
@@ -113,11 +166,6 @@ namespace KelimeOyunu
             }
             if (varMi == false)
                 Console.WriteLine("YOK");
-
-
         }
-
-        
-
     }
 }

@@ -13,6 +13,7 @@ namespace KelimeOyunu
         {
             this.adi = isim;
         }
+
         public string OyuncuAdi //adi isimli degiskene dogrudan disaridan erisilmesin diye
         {
             get
@@ -24,11 +25,11 @@ namespace KelimeOyunu
                 this.adi = value;
             }
         }
-        AI aa = new AI();
+
+        /*AI aa = new AI();
         public void KelimeGonder(string sozcuk) //disaridan alinan kelimeyi karar fonksiyonuna gönderir
         {
             aa.Karar(sozcuk);
-        }
-        
+        }*/
     }
 }
